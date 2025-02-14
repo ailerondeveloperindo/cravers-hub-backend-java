@@ -1,6 +1,7 @@
 package com.cravershub.craver_hub.controller;
 
 import com.cravershub.craver_hub.POJOrandom;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     @GetMapping(value = "/getCustomerData")
-    public POJOrandom getCustomerData() {
-        return new POJOrandom(1, "asu");
+    public Integer getCustomerData(@RequestBody Integer customerId, HttpServletResponse response) {
+        return customerId;
     }
 
     @PostMapping(value = "/signUp")

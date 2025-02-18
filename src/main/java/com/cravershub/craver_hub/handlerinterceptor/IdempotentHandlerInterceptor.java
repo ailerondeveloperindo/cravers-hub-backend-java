@@ -16,6 +16,7 @@ public class IdempotentHandlerInterceptor implements HandlerInterceptor {
                 // TODO: This condition needs to be their own method
                 if (x_request_id == null) {
                     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    return false;
                 }
                 else
                 {
@@ -24,6 +25,7 @@ public class IdempotentHandlerInterceptor implements HandlerInterceptor {
                 case "PUT":
                     if (x_request_id == null) {
                         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        return false;
                     }
                     else
                     {
@@ -32,6 +34,7 @@ public class IdempotentHandlerInterceptor implements HandlerInterceptor {
                     case "DELETE":
                         if (x_request_id == null) {
                             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                            return false;
                         }
                         else
                         {

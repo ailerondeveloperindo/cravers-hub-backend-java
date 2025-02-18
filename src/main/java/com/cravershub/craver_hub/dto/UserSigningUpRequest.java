@@ -1,13 +1,26 @@
 package com.cravershub.craver_hub.dto;
 
-public class UserSigningUpRequest {
+import com.cravershub.craver_hub.validator.NotNullDisable;
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
+
+public class UserSigningUpRequest implements DTO, Serializable {
+
+    @NotNull(message = "firstname is required")
+    @NotEmpty
     private String firstName;
+    @NotNull(message = "lastname is required")
     private String lastName;
+    @NotNull(message = "Email is required")
+    @NotEmpty
     private String email = "";
     private String firebaseToken = "";
     private String password = "";
     private String phoneNumber = "";
-    private int phoneAreaCode = 0;
+    private Integer phoneAreaCode = 0;
 
     public String getFirstName() {
         return firstName;
@@ -25,6 +38,7 @@ public class UserSigningUpRequest {
         this.lastName = lastName;
     }
 
+    @Nullable
     public String getEmail() {
         return email;
     }
@@ -33,6 +47,7 @@ public class UserSigningUpRequest {
         this.email = email;
     }
 
+    @Nullable
     public String getFirebaseToken() {
         return firebaseToken;
     }
@@ -41,19 +56,21 @@ public class UserSigningUpRequest {
         this.firebaseToken = firebaseToken;
     }
 
+    @Nullable
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@Nullable String password) {
         this.password = password;
     }
 
+    @Nullable
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(@Nullable String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

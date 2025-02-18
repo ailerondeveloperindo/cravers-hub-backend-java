@@ -1,33 +1,32 @@
 package com.cravershub.craver_hub.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customer")
 public class Customer {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "\"FirstName\"", nullable = false, length = Integer.MAX_VALUE)
+
+    @Column(name = "\"firstname\"", nullable = false, length = Integer.MAX_VALUE)
     private String firstName;
 
-    @Column(name = "\"LastName\"", length = Integer.MAX_VALUE)
+    @Column(name = "\"lastname\"", length = Integer.MAX_VALUE)
     private String lastName;
 
-    @Column(name = "\"Password\"", length = Integer.MAX_VALUE)
+    @Column(name = "\"password\"", length = Integer.MAX_VALUE)
     private String password;
 
-    @Column(name = "\"Email\"", length = Integer.MAX_VALUE)
+    @Column(name = "\"email\"", length = Integer.MAX_VALUE)
     private String email;
 
-    @Column(name = "\"PhoneNumber\"", length = Integer.MAX_VALUE)
+    @Column(name = "\"phone_number\"", length = Integer.MAX_VALUE)
     private String phoneNumber;
 
-    @Column(name = "\"FirebaseToken\"", length = Integer.MAX_VALUE)
+    @Column(name = "\"firebase_token\"", length = Integer.MAX_VALUE)
     private String firebaseToken;
 
     @Column(name = "xenditcustomerid", length = Integer.MAX_VALUE)

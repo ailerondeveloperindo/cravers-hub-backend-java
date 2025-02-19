@@ -12,7 +12,7 @@ public class UserSigningUpRequest implements DTO, Serializable {
     @NotNull(message = "firstname is required")
     @NotEmpty
     private String firstName;
-    @NotNull(message = "lastname is required")
+    @NotNull(message = "{\"lastname is required\"}")
     private String lastName;
     @NotNull(message = "Email is required")
     @NotEmpty

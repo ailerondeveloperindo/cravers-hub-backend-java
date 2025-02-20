@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService implements BaseService{
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {

@@ -63,9 +63,11 @@ public class JWTValidationFilter extends OncePerRequestFilter {
                 Algorithm algorithm = Algorithm.RSA256(keyProvider);
                 JWTVerifier verifier = JWT.require(algorithm).withIssuer("https://dev-0ffhc1bmak2bqurs.us.auth0.com/").build();
                 verifier.verify(authHeader);
+                filterChain.doFilter(request, response);
             }
             else {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return;
             }
         }catch (Exception e)
         {

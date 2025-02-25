@@ -22,9 +22,11 @@ import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class JWTValidationFilter extends OncePerRequestFilter {
 
+    private Logger logger = Logger.getLogger(JWTValidationFilter.class.getName());
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -74,6 +76,7 @@ public class JWTValidationFilter extends OncePerRequestFilter {
             Jsend responseBody = new Jsend("error",e.getMessage(),null);
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.getWriter().write("{tes}");
+            logger.severe(e.getMessage());
         }
 
     }

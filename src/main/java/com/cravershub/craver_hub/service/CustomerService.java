@@ -1,6 +1,6 @@
 package com.cravershub.craver_hub.service;
 
-import com.cravershub.craver_hub.dto.UserSigningUpRequest;
+import com.cravershub.craver_hub.dto.UserSigningUpRequestDTO;
 import com.cravershub.craver_hub.dto.UserSigningUpResponse;
 import com.cravershub.craver_hub.entity.Customer;
 import com.cravershub.craver_hub.repositories.CustomerRepository;
@@ -17,13 +17,24 @@ public class CustomerService implements BaseService{
         this.customerRepository = customerRepository;
     }
 
-    public UserSigningUpResponse signingUp(UserSigningUpRequest userSignUp) {
+    public UserSigningUpResponse signingUp(UserSigningUpRequestDTO userSignUp) {
         Customer customer = new Customer();
         UserSigningUpResponse userSigningUpResponse = new UserSigningUpResponse();
+        if( userSignUp.getRegistrationType() == "BY_EMAIL" ) // TODO: Interface
+        {
+            customer.setEmail(userSignUp.getEmail());
+        }
+        else if( userSignUp.getRegistrationType() == "BY_PHONE" )
+        {
+            // Still requires recovery email
+            customer.setPhoneNumber(userSignUp.getPhoneNumber());
+        }
         customer.setFirstName(userSignUp.getFirstName());
         customer.setLastName(userSignUp.getLastName());
-        customer.setEmail(userSignUp.getEmail());
+
         customer.setPassword(userSignUp.getPassword());
+        customer.setFirebaseToken(userSignUp.getFirebaseToken());
+        customer.setPhoneAreaCode(userSignUp.getPhoneAreaCode());
         customerRepository.save(customer);
         userSigningUpResponse.setCustomerId(customer.getId());
         return userSigningUpResponse;

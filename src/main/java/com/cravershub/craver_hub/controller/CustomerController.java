@@ -1,6 +1,6 @@
 package com.cravershub.craver_hub.controller;
 
-import com.cravershub.craver_hub.dto.UserSigningUpRequest;
+import com.cravershub.craver_hub.dto.UserSigningUpRequestDTO;
 import com.cravershub.craver_hub.dto.UserSigningUpResponse;
 import com.cravershub.craver_hub.service.CustomerService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -30,7 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/signUp")
-    public ResponseEntity<UserSigningUpResponse> signUp(@Valid @RequestBody UserSigningUpRequest userSigningUpRequest, BindingResult bindingResult) {
+    public ResponseEntity<UserSigningUpResponse> signUp(@Valid @RequestBody UserSigningUpRequestDTO userSigningUpRequest, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

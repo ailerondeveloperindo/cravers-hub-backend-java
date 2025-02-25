@@ -32,6 +32,17 @@ public class Customer {
     @Column(name = "xenditcustomerid", length = Integer.MAX_VALUE)
     private String xenditcustomerid;
 
+    @Column(name = "phone_area_code")
+    private Integer phoneAreaCode;
+
+    public Integer getPhoneAreaCode() {
+        return phoneAreaCode;
+    }
+
+    public void setPhoneAreaCode(Integer phoneAreaCode) {
+        this.phoneAreaCode = phoneAreaCode;
+    }
+
     public Integer getId() {
         return id;
     }
